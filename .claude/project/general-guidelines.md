@@ -1,0 +1,6 @@
+- always leave an empty line at the end of all files you create
+- don't add comments to the code
+- add docstrings to functions/classes explaining only what they do (not args, returns, etc.)
+- docstrings must always be multi-line format with newlines: """\n<text>\n"""
+- define the public interface of packages in __init__.py by importing classes/functions from submodules
+- don't use comments or docstrings in test files
