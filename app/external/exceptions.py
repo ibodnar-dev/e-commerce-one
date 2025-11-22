@@ -1,2 +1,2 @@
-class ExternalException(Exception):
+class ExternalError(Exception):
     """Base external exception."""

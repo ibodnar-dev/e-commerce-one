@@ -1,5 +1,5 @@
-from app.external.exceptions import ExternalException
+from app.external.exceptions import ExternalError
 
 
-class AdapterException(ExternalException):
+class AdapterError(ExternalError):
     """Base adapter exception."""

@@ -1,9 +1,9 @@
-from app.external.exceptions import ExternalException
+from app.external.exceptions import ExternalError
 
 
-class RepositoryException(ExternalException):
+class RepositoryError(ExternalError):
     """Base repository exception."""
 
 
-class DatabaseException(RepositoryException):
+class DBError(RepositoryError):
     """Raised when a database operation fails."""
