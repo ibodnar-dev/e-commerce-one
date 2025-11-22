@@ -1,7 +1,7 @@
-from app.external.exceptions import InfraException
+from app.external.exceptions import ExternalException
 
 
-class RepositoryException(InfraException):
+class RepositoryException(ExternalException):
     """Base repository exception."""
 
 

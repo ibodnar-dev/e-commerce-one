@@ -1,2 +1,2 @@
-class InfraException(Exception):
+class ExternalException(Exception):
     """Base external exception."""

@@ -1,5 +1,5 @@
-from app.external.exceptions import InfraException
+from app.external.exceptions import ExternalException
 
 
-class AdapterException(InfraException):
+class AdapterException(ExternalException):
     """Base adapter exception."""
