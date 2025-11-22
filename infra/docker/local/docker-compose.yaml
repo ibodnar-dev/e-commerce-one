@@ -1,7 +1,7 @@
 services:
   postgres-dev:
     image: postgres:16-alpine
-    container_name: app-postgres-dev
+    container_name: ec-one-postgres-dev
     environment:
       POSTGRES_USER: app
       POSTGRES_PASSWORD: app
@@ -18,7 +18,7 @@ services:
 
   postgres-test:
     image: postgres:16-alpine
-    container_name: app-postgres-test
+    container_name: ec-one-postgres-test
     environment:
       POSTGRES_USER: app
       POSTGRES_PASSWORD: app
