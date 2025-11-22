@@ -5,7 +5,9 @@ from app.settings import settings
 
 
 def setup_logging() -> None:
-    """Configure logging for the entire application."""
+    """
+    Configure logging for the entire application.
+    """
     logging.basicConfig(
         level=settings.log_level,
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -14,5 +16,7 @@ def setup_logging() -> None:
 
 
 def get_logger(name: str) -> logging.Logger:
-    """Get a logger instance for a module."""
+    """
+    Get a logger instance for a module.
+    """
     return logging.getLogger(name)
