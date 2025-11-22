@@ -15,6 +15,10 @@ dc-up-db-test:
 	@echo "Starting postgres-dev"
 	docker-compose -f infra/docker/local/docker-compose.yaml up postgres-test -d --wait
 
+dc-down:
+	@echo "Stopping all docker containers"
+	docker-compose -f infra/docker/local/docker-compose.yaml down
+
 test-unit:
 	@echo "Running unit tests..."
 	source .venv/bin/activate && pytest tests/unit -vs
