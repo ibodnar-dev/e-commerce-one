@@ -1,7 +1,7 @@
 [project]
-name = "fastapi-starter"
+name = "e-commerce-one"
 version = "0.1.0"
-description = "FastAPI Hexagonal Architecture Starter"
+description = ""
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard]>=0.119.0",
