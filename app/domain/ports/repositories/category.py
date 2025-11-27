@@ -1,13 +1,12 @@
 from abc import abstractmethod, ABC
-from uuid import UUID
 
 from app.domain.models import Category
-from app.domain.models.data import CategoryUpdate
+from app.domain.models.data import CategoryUpdate, CategoryCreate
 
 
 class CategoryRepository(ABC):
     @abstractmethod
-    def create(self, category: Category) -> Category:
+    def create(self, category: CategoryCreate) -> Category:
         """
         Create a new category. To create a subcategory,
         set the parent_id field to the ID of the parent category.
