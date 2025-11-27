@@ -1,1 +1,3 @@
-__all__ = []
+from .category import CategoryRepository
+
+__all__ = ["CategoryRepository"]
