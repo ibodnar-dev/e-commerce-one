@@ -1,7 +1,7 @@
 import os
 
-from app.settings.base import Settings
-from app.settings.environments import ENVIRONMENT_OVERRIDES, Environment
+from .main import Settings
+from .environments import ENVIRONMENT_OVERRIDES, Environment
 
 
 def get_settings() -> Settings:
