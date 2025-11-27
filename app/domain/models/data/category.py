@@ -5,8 +5,7 @@ from sqlmodel import SQLModel
 from app.domain.models.db import CategoryBase
 
 
-class CategoryCreate(CategoryBase):
-    ...
+class CategoryCreate(CategoryBase): ...
 
 
 class CategoryPublic(CategoryBase):

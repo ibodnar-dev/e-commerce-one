@@ -46,5 +46,7 @@ class SQLCategoryRepository(CategoryRepository):
         try:
             return self._session.get(Category, UUID(category_id))
         except Exception as e:
-            logger.exception(f"Error finding category by ID: {e}", extra={"category_id": category_id})
+            logger.exception(
+                f"Error finding category by ID: {e}", extra={"category_id": category_id}
+            )
             raise RepositoryError(f"Error finding category by ID: {e}") from e

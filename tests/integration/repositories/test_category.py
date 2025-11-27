@@ -12,5 +12,4 @@ class TestCategoryCRUD:
         assert created.name == self.category_name
         assert created.parent_id is None
 
-    def test_update(self, category_repo: SQLCategoryRepository):
-        ...
+    def test_update(self, category_repo: SQLCategoryRepository): ...

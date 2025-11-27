@@ -1,7 +1,7 @@
-from abc import abstractmethod, ABC
+from abc import ABC, abstractmethod
 
 from app.domain.models import Category
-from app.domain.models.data import CategoryUpdate, CategoryCreate
+from app.domain.models.data import CategoryCreate, CategoryUpdate
 
 
 class CategoryRepository(ABC):
