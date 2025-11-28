@@ -40,7 +40,15 @@ class SQLCategoryRepository(CategoryRepository):
             raise RepositoryError(f"Error updating category: {e}") from e
 
     def delete(self, category_id: str) -> None:
-        pass
+        try:
+            db_category = self.find_by_id(category_id)
+            if not db_category:
+                raise RepositoryError(f"Category with ID {category_id} not found")
+            self._session.delete(db_category)
+            self._session.flush()
+        except Exception as e:
+            logger.exception(f"Error deleting category: {e}", extra={"category_id": category_id})
+            raise RepositoryError(f"Error deleting category: {e}") from e
 
     def find_by_id(self, category_id: str) -> Category | None:
         try:
