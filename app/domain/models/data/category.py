@@ -9,7 +9,7 @@ class CategoryCreate(CategoryBase): ...
 
 
 class CategoryPublic(CategoryBase):
-    id: int
+    id: UUID
 
 
 class CategoryUpdate(SQLModel):
