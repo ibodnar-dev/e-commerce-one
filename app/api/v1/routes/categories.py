@@ -1,11 +1,11 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, status
 
 from app.api.v1.dependencies import get_category_repository
 from app.domain.models.data import CategoryCreate, CategoryPublic, CategoryUpdate
 from app.domain.ports.repositories import CategoryRepository
-from app.external.adapters.repositories.exceptions import RepositoryError
+from app.domain.services import category as category_service
 
 router = APIRouter(prefix="/categories", tags=["categories"])
 
@@ -18,13 +18,7 @@ def create_category(
     """
     Create a new category.
     """
-    try:
-        return repository.create(category)
-    except RepositoryError as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=str(e),
-        ) from e
+    return category_service.create(category=category, repo=repository)
 
 
 @router.get("/{category_id}", response_model=CategoryPublic)
@@ -35,19 +29,7 @@ def get_category(
     """
     Get a category by ID.
     """
-    try:
-        category = repository.find_by_id(category_id)
-        if not category:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Category with ID {category_id} not found",
-            )
-        return category
-    except RepositoryError as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=str(e),
-        ) from e
+    return category_service.find_by_id(category_id, repo=repository)
 
 
 @router.put("/{category_id}", response_model=CategoryPublic)
@@ -59,18 +41,7 @@ def update_category(
     """
     Update a category.
     """
-    try:
-        return repository.update(category_id, category_update)
-    except RepositoryError as e:
-        if "not found" in str(e).lower():
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail=str(e),
-            ) from e
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=str(e),
-        ) from e
+    return category_service.update(category_id, category_update, repo=repository)
 
 
 @router.delete("/{category_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -81,10 +52,4 @@ def delete_category(
     """
     Delete a category.
     """
-    try:
-        repository.delete(category_id)
-    except RepositoryError as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=str(e),
-        ) from e
+    category_service.delete(category_id, repo=repository)
