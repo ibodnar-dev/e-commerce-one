@@ -22,3 +22,14 @@ def setup_db():
 @pytest.fixture(scope="session")
 def test_client():
     yield TestClient(app)
+
+
+@pytest.fixture(scope="session")
+def category_create_payload():
+    return {"name": "test category"}
+
+
+@pytest.fixture(scope="session")
+def created_category(test_client, category_create_payload):
+    response = test_client.post("/api/v1/categories", json=category_create_payload)
+    return response.json()
