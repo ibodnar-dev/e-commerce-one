@@ -11,7 +11,7 @@ class Settings(BaseSettings):
         env_file=".env",
         extra="ignore",
     )
-    environment: str = Field(default="development")
+    env: str = Field(default="development")
     log_level: str = "INFO"
     project_root: Path = Field(default_factory=lambda: Path(__file__).resolve().parents[2])
     db_user: str
