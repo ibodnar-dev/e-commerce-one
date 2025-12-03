@@ -1,10 +1,11 @@
-.PHONY: test-e2e test-integration test-unit test-all help
+.PHONY: test-e2e test-integration test-unit test-all help build-app-dev
 
 help:
-	@echo "Available test commands:"
+	@echo "Available commands:"
+	@echo "  make build-app-dev     - Build the application Docker image"
 	@echo "  make test-unit         - Run unit tests"
-	@echo "  make test-integration  - Run integration tests (APP_ENV=integration)"
-	@echo "  make test-e2e          - Run e2e tests (APP_ENV=e2e)"
+	@echo "  make test-integration  - Run integration tests (ENV=integration)"
+	@echo "  make test-e2e          - Run e2e tests (ENV=e2e)"
 	@echo "  make test-all          - Run all tests in sequence"
 
 dc-up-db-dev:
@@ -24,12 +25,12 @@ test-unit:
 	source .venv/bin/activate && pytest tests/unit -vs
 
 test-integration: dc-up-db-test
-	@echo "Running integration tests with APP_ENV=integration..."
-	source .venv/bin/activate && export APP_ENV=integration && db-setup && pytest tests/integration -v
+	@echo "Running integration tests with ENV=integration..."
+	source .venv/bin/activate && export ENV=integration && db-setup && pytest tests/integration -v
 
 test-e2e: dc-up-db-test
-	@echo "Running e2e tests with APP_ENV=e2e..."
-	source .venv/bin/activate && export APP_ENV=integration && db-setup && pytest tests/e2e -v
+	@echo "Running e2e tests with ENV=e2e..."
+	source .venv/bin/activate && export ENV=integration && db-setup && pytest tests/e2e -v
 
 test-all:
 	@echo "Running all test suites..."

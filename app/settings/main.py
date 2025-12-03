@@ -8,7 +8,6 @@ class Settings(BaseSettings):
     """Application settings with environment-specific overrides."""
 
     model_config = SettingsConfigDict(
-        env_prefix="APP_",
         env_file=".env",
         extra="ignore",
     )

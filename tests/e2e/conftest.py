@@ -15,7 +15,7 @@ def setup_db():
     create_tables()
     SQLModel.metadata.create_all(default_engine)
     yield
-    if os.environ.get("APP_ENV") == Environment.e2e.value:
+    if os.environ.get("ENV") == Environment.e2e.value:
         drop_tables()
 
 

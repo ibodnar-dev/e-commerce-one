@@ -6,7 +6,7 @@ from .main import Settings
 
 def get_settings() -> Settings:
     """Get settings with environment-specific overrides."""
-    env = os.getenv("APP_ENV", Environment.development.value)
+    env = os.getenv("ENV", Environment.development.value)
     env_overrides = ENVIRONMENT_OVERRIDES.get(
         env, ENVIRONMENT_OVERRIDES[Environment.development.value]
     )

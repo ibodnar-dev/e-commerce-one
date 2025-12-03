@@ -14,5 +14,5 @@ def setup_db():
     SQLModel.metadata.create_all(default_engine)
     yield
     # Clean up: drop all tables after tests
-    if os.environ.get("APP_ENV") == Environment.integration.value:
+    if os.environ.get("ENV") == Environment.integration.value:
         drop_tables()
