@@ -20,6 +20,10 @@ dc-down:
 	@echo "Stopping all docker containers"
 	docker-compose -f infra/docker/local/docker-compose.yaml down
 
+build-app-dev:
+	@echo "Building application Docker image"
+	docker build -f infra/docker/local/Dockerfile -t e-commerce-one:latest .
+
 test-unit:
 	@echo "Running unit tests..."
 	source .venv/bin/activate && pytest tests/unit -vs
